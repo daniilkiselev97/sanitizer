@@ -1,0 +1,5 @@
+<h3>Введите HTML-код:</h3>
+<textarea [formControl]="userInput" rows="5" cols="50"></textarea>
+<h3>Результат (после фильтрации):</h3>
+<div [innerHTML]="sanitizedContent"></div>
+<button (click)="sanitizeInput()">Санитизировать</button>
