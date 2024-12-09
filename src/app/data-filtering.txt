@@ -1,0 +1,28 @@
+Автоматически фильтруемые данные:
+1.HTML через [innerHTML]:
+Angular экранирует весь HTML-контент.
+userInput = '<script>alert("XSS")</script><b>Жирный текст</b>';
+
+2.URL через [src] или [href]:
+Небезопасные URL (например, javascript:alert() или data:) блокируются.
+<a [href]="userUrl">Ссылка</a>
+
+Примеры ошибок:
+unsafe: ошибка: Возникает, если URL считается небезопасным. Angular изменяет его на unsafe:<URL>.
+Неправильный HTML: Если данные содержат скрипты или небезопасные атрибуты, они экранируются.
+
+Требующие явного вмешательства данные:
+1.HTML для [innerHTML]:
+Если нужно отобразить доверенный HTML, необходимо использовать DomSanitizer.bypassSecurityTrustHtml.
+
+2.URL для [src] или [href]:
+Например, при работе с iframe:
+safeUrl = this.sanitizer.bypassSecurityTrustResourceUrl('https://example.com');
+
+3.CSS (привязка [style]):
+Для динамических стилей Angular может блокировать опасные значения.
+Используйте bypassSecurityTrustStyle для безопасных данных.
+
+4.Script (хотя крайне не рекомендуется):
+Для выполнения JavaScript через Angular привязки требуется bypassSecurityTrustScript.
+
