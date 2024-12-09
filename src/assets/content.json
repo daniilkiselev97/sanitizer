@@ -1,0 +1,3 @@
+{
+	"content": "<script>alert('XSS');</script><b>Безопасный текст</b>"
+}

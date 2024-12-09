@@ -1,0 +1,8 @@
+<h3>Введите URL для iframe:</h3>
+<input [formControl]="videoUrl" placeholder="Введите URL" />
+<button (click)="updateUrl()">Обновите iframe</button>
+
+<h3>Предпросмотр:</h3>
+@if(safeUrl){
+<iframe [src]="safeUrl" width="600" height="400" frameBorder="0"> </iframe>
+}
